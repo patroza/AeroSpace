@@ -71,18 +71,14 @@ jobs:
       - name: Sign AeroSpace.app
         uses: patroza/code-sign-action@main
         with:
-          file: .release/AeroSpace.app
+          file: |
+            .release/AeroSpace.app
+            .release/aerospace
+
           certificate-data: ${{ secrets.SIGN_CERT }}
           certificate-password: ${{ secrets.SIGN_PASSWORD }}
           certificate-id: aerospace-codesign-certificate
 
-      - name: Sign binary
-        uses: patroza/code-sign-action@main
-        with:
-          file: .release/aerospace
-          certificate-data: ${{ secrets.SIGN_CERT }}
-          certificate-password: ${{ secrets.SIGN_PASSWORD }}
-          certificate-id: aerospace-codesign-certificate
 
       - uses: actions/upload-artifact@v4
         with:
