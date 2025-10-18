@@ -36,6 +36,13 @@ jobs:
       - run: ./build-debug.sh
       - run: ./run-tests.sh
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-debug
+          path: |
+            .debug
+
+
   # We build release artifacts only on the latest macOS versions because:
   # 1. It cuts the build time twice on GH Actions
   # 2. The latest Xcode version is not available on old macOS, and old Xcode versions bundle too old Swift version
@@ -59,3 +66,9 @@ jobs:
       - name: cat ./.release/xcodebuild.log
         if: ${{ always() }}
         run: 'if test -f ./.release/xcodebuild.log; then cat ./.release/xcodebuild.log; fi'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-release
+          path: |
+            .release
