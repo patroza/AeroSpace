@@ -71,7 +71,7 @@ jobs:
       - name: Sign AeroSpace.app
         uses: lando/code-sign-action@v3
         with:
-          file: ./.release/AeroSpace.app
+          file: .release/AeroSpace.app
           certificate-data: ${{ secrets.SIGN_CERT }}
           certificate-password: ${{ secrets.SIGN_PASSWORD }}
           certificate-id: aerospace-codesign-certificate
@@ -79,7 +79,7 @@ jobs:
       - name: Sign binary
         uses: lando/code-sign-action@v3
         with:
-          file: ./.release/aerospace
+          file: .release/aerospace
           certificate-data: ${{ secrets.SIGN_CERT }}
           certificate-password: ${{ secrets.SIGN_PASSWORD }}
           certificate-id: aerospace-codesign-certificate
