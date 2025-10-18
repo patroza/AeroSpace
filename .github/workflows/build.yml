@@ -38,9 +38,10 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
+          include-hidden-files: true
           name: ${{ matrix.os }}-debug
           path: |
-            .debug
+            .debug/
 
 
   # We build release artifacts only on the latest macOS versions because:
@@ -69,6 +70,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
+          include-hidden-files: true
           name: ${{ matrix.os }}-release
           path: |
-            .release
+            .release/
